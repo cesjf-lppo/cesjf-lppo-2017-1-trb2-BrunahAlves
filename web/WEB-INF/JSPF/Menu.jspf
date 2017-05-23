@@ -1,0 +1,20 @@
+<%-- any content can be specified here e.g.: --%>
+<%@ page pageEncoding="UTF-8" %>
+<nav>
+<h2>Menu!</h2>
+<ul>
+    <li>Planejamento</li>
+    <lo>Adicionar nova coleta</lo>
+    <lo>Adicionar leitura a coleta</lo>
+    
+    
+    <li>Coleta</li>
+    <lo>Nova leitura</lo>
+
+    <li>Análise</li>
+    <lo>Listar as coletas</lo>
+    <lo>Listar por local</lo>
+    
+    
+</ul>
+</nav>
