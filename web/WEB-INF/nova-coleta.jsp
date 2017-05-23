@@ -12,7 +12,7 @@
         <title>Planejamento</title>
     </head>
     <body>
-        <h1>Fase de planejamento</h1>
+        <h1>Fase de planejamento - Coleta</h1>
          <div style="color: red;">${mensagem}</div>
         <form method="post">
             <div><label> Descrição: <input type="text" name="descricao" placeholder="Digite a descricao" /></label></div>

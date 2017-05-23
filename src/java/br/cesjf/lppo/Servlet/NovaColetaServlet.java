@@ -32,7 +32,7 @@ public class NovaColetaServlet extends HttpServlet {
         Coleta novaColeta = new Coleta();
 
         novaColeta.setDescricao(request.getParameter("descricao"));
-        novaColeta.setData(Timestamp.valueOf(request.getParameter("data")));
+//        novaColeta.setData(Timestamp.valueOf(request.getParameter("data")));
 
         try {
             ColetaDAO dao = new ColetaDAO();
