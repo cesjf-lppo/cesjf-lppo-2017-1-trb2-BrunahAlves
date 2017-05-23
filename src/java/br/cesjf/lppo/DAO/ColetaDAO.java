@@ -26,7 +26,7 @@ public class ColetaDAO {
             opNovaColeta.setDate(2, (Date) novaColeta.getData());
             opNovaColeta.executeUpdate();
         } catch (SQLException ex) {
-            throw new Exception("Erro ao inserir novo Pedido!", ex);
+            throw new Exception("Erro ao inserir nova Coleta!", ex);
         }
     }
 }
