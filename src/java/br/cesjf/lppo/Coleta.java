@@ -9,17 +9,11 @@ import java.util.Date;
  * @author Bruna Alves
  */
 public class Coleta {
-    private Long id;
+    private int id;
     private String descricao;
     private Date data;
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
+  
 
     public String getDescricao() {
         return descricao;
@@ -35,6 +29,14 @@ public class Coleta {
 
     public void setData(Date data) {
         this.data = data;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
     
     

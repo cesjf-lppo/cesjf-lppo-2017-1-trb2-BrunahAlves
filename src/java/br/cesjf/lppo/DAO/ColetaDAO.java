@@ -45,7 +45,7 @@ public class ColetaDAO {
             while (resultado.next()) {
                Coleta novaColeta = new Coleta();
                      
-                novaColeta.setId(resultado.getLong("id"));
+                novaColeta.setId(resultado.getInt("id"));
                 novaColeta.setDescricao(resultado.getString("descricao"));
                 novaColeta.setData(resultado.getTimestamp("dat"));
                 coleta.add(novaColeta);

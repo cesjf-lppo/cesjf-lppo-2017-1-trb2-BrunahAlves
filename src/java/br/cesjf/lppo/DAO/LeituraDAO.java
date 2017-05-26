@@ -54,7 +54,7 @@ public class LeituraDAO {
                 leituraColeta.setLeitura(resultado.getFloat("leitura"));
                 leituraColeta.setUnidade(resultado.getString("unidade"));
                 leituraColeta.setAtualizacao(resultado.getTimestamp("atualizacao"));
-               listaLeituraColeta.add(leituraColeta);
+                listaLeituraColeta.add(leituraColeta);
             }
 
              return listaLeituraColeta;

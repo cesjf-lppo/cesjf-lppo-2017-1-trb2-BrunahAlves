@@ -29,12 +29,12 @@
             <tbody>
                 <c:forEach var="leituraColeta" items="${leituracoleta}">    
                 <tr>
-                    <td>${leituracoleta.id}</td>
-                    <td>${leituracoleta.coleta}</td>
-                    <td>${leituracoleta.local}</td>
-                    <td>${leituracoleta.leitura}</td>
-                    <td>${leituracoleta.unidade}</td>
-                    <td>${leituracoleta.atualizacao}</td>
+                    <td>${leituraColeta.id}</td>
+                    <td>${leituraColeta.coleta}</td>
+                    <td>${leituraColeta.local}</td>
+                    <td>${leituraColeta.leitura}</td>
+                    <td>${leituraColeta.unidade}</td>
+                    <td>${leituraColeta.atualizacao}</td>
                     
                 </tr>
                 </c:forEach>
