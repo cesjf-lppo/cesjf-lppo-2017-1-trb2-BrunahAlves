@@ -20,7 +20,7 @@ public class ColetaDAO {
 
         Connection conexao = ConnectionFactory.createConnection();
         opNovaColeta = conexao.prepareStatement("INSERT INTO Coleta(descricao, dat) VALUES(?,?)");
-        opListarColeta = conexao.prepareStatement("SELECT * FROM Coleta GROUP BY coleta");
+        opListarColeta = conexao.prepareStatement("SELECT id, descricao,dat FROM Coleta");
 
     }
 
@@ -38,23 +38,22 @@ public class ColetaDAO {
 
     public List<Coleta> listByColeta() throws Exception {
         try {
-            List<Coleta> pedidos = new ArrayList<>();
+            List<Coleta> coleta = new ArrayList<>();
 
             ResultSet resultado = opListarColeta.executeQuery();
 
             while (resultado.next()) {
-                Coleta novaColeta = new Coleta();
-
+               Coleta novaColeta = new Coleta();
+                     
                 novaColeta.setId(resultado.getLong("id"));
                 novaColeta.setDescricao(resultado.getString("descricao"));
-                //Adicionar o setData
-                //Coleta.add(novaColeta); verificar
+                novaColeta.setData(resultado.getTimestamp("dat"));
+                coleta.add(novaColeta);
             }
-
-            return pedidos;
+            return coleta;
 
         } catch (SQLException ex) {
-            throw new Exception("Erro ao listar os pedidos no banco!", ex);
+            throw new Exception("Erro ao listar as coletas no banco!", ex);
         }
     
     }
