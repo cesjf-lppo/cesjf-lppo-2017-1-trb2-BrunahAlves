@@ -15,7 +15,7 @@ public class ColetaDAO {
     public ColetaDAO() throws Exception {
 
         Connection conexao = ConnectionFactory.createConnection();
-        opNovaColeta = conexao.prepareStatement("INSERT INTO Coleta(descricao, data) VALUES(?,?)");
+        opNovaColeta = conexao.prepareStatement("INSERT INTO Coleta(descricao, dat) VALUES(?,?)");
 
     }
 
@@ -25,6 +25,7 @@ public class ColetaDAO {
             opNovaColeta.setString(1, novaColeta.getDescricao());
             opNovaColeta.setDate(2, (Date) novaColeta.getData());
             opNovaColeta.executeUpdate();
+            System.out.println("teste" + novaColeta.getData());
         } catch (SQLException ex) {
             throw new Exception("Erro ao inserir nova Coleta!", ex);
         }

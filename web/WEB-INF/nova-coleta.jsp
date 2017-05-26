@@ -3,8 +3,9 @@
     Created on : 21/05/2017, 23:31:33
     Author     : Bruna Alves
 --%>
-
+<%@page import="java.text.SimpleDateFormat"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -16,7 +17,7 @@
          <div style="color: red;">${mensagem}</div>
         <form method="post">
             <div><label> Descrição: <input type="text" name="descricao" placeholder="Digite a descricao" /></label></div>
-            <div><label> Data: <input type="text" name="data" placeholder="Digite a data" /></label></div>
+            <div><label> Data: <input type="datetime" name="data"/></label></div>
             <div><input type="submit" /></div>   
         </form>
     </body>
