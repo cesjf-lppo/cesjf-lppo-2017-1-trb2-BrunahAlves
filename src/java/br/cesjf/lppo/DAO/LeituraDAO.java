@@ -22,7 +22,7 @@ public class LeituraDAO {
     public LeituraDAO() throws Exception {
 
         Connection conexao = ConnectionFactory.createConnection();
-        opNovaLeitura = conexao.prepareStatement("INSERT INTO Leitura(unidade, local) VALUES(?,?)");
+        opNovaLeitura = conexao.prepareStatement("INSERT INTO Leitura(unidade, loca) VALUES(?,?)");
         opBuscaPorLeituraColeta = conexao.prepareStatement("SELECT * FROM Leitura WHERE coleta = ?");
 
     }
@@ -38,29 +38,29 @@ public class LeituraDAO {
         }
     }
 
-    public List<Leitura> listByLeituradaColeta(int id) throws Exception {
+    public List<Leitura> listByLeituradaColeta(Integer id) throws Exception {
         try {
-            List<Leitura> LeituraColeta = new ArrayList<>();
+            List<Leitura> listaLeituraColeta = new ArrayList<>();
 
-        //    opBuscaPorLeituraColeta.setInt(1, coleta); verificar
+            opBuscaPorLeituraColeta.setInt(1, id);
             ResultSet resultado = opBuscaPorLeituraColeta.executeQuery();
 
             while (resultado.next()) {
                 Leitura leituraColeta = new Leitura();
 
-                leituraColeta.setId(resultado.getLong("id"));
+                leituraColeta.setId(resultado.getInt("id"));
                 leituraColeta.setColeta(resultado.getInt("coleta"));
-                leituraColeta.setLocal(resultado.getString("local"));
+                leituraColeta.setLocal(resultado.getString("loca"));
                 leituraColeta.setLeitura(resultado.getFloat("leitura"));
                 leituraColeta.setUnidade(resultado.getString("unidade"));
                 leituraColeta.setAtualizacao(resultado.getTimestamp("atualizacao"));
-                //leituracoleta.add(leituraColeta); verificar
+               listaLeituraColeta.add(leituraColeta);
             }
 
-            // return leituracoleta;
-            return null;
+             return listaLeituraColeta;
+
         } catch (SQLException ex) {
-            throw new Exception("Erro ao listar os pedidos no banco!", ex);
+            throw new Exception("Erro ao listar as leituras no banco!", ex);
         }
 
     }

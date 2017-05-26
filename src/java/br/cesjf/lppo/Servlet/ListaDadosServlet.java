@@ -44,19 +44,19 @@ public class ListaDadosServlet extends HttpServlet {
             request.getRequestDispatcher("WEB-INF/lista-porcoleta.jsp").forward(request, response);
         } else if (request.getRequestURI().contains("/listaLeituraDaColeta.html")) {
 
-            List<Leitura> LeituraColeta;
+            List<Leitura> leituraColeta;
 
             try {
                 LeituraDAO dao = new LeituraDAO();
-                int id = Integer.parseInt(request.getParameter("coleta")); //pega o ID da Coleta
-                LeituraColeta = dao.listByLeituradaColeta(id);
+                int id = Integer.parseInt("id"); //pega o ID da Coleta
+                leituraColeta = dao.listByLeituradaColeta(Integer.parseInt(request.getParameter("pedido")));
             } catch (Exception ex) {
                 Logger.getLogger(ListaDadosServlet.class.getName()).log(Level.SEVERE, null, ex);
-                LeituraColeta = new ArrayList<>();
+                leituraColeta = new ArrayList<>();
                 request.setAttribute("mensagem", ex.getLocalizedMessage());
             }
 
-            request.setAttribute("leituracoleta", LeituraColeta);
+            request.setAttribute("leituracoleta", leituraColeta);
             request.getRequestDispatcher("WEB-INF/lista-leituraporcoleta.jsp").forward(request, response);
         } else if (request.getRequestURI().contains("/listaPorLocal.html")) {
             List<Leitura> local;

@@ -8,20 +8,14 @@ import java.util.Date;
  * @author Bruna Alves
  */
 public class Leitura {
-    private Long id;
+    private int id;
     private int coleta;
     private String local;
     private float leitura;
     private String unidade;
     private Date atualizacao;
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
+ 
 
     public int getColeta() {
         return coleta;
@@ -61,6 +55,14 @@ public class Leitura {
 
     public void setAtualizacao(Date atualizacao) {
         this.atualizacao = atualizacao;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
     
     
