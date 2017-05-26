@@ -48,7 +48,7 @@ public class ColetaDAO {
                 novaColeta.setId(resultado.getLong("id"));
                 novaColeta.setDescricao(resultado.getString("descricao"));
                 //Adicionar o setData
-                //Coleta.add(novaColeta);
+                //Coleta.add(novaColeta); verificar
             }
 
             return pedidos;
