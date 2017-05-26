@@ -18,12 +18,14 @@ public class LeituraDAO {
 
     private final PreparedStatement opNovaLeitura;
     private final PreparedStatement opBuscaPorLeituraColeta;
+    private final PreparedStatement opBuscaPorLocal;
 
     public LeituraDAO() throws Exception {
 
         Connection conexao = ConnectionFactory.createConnection();
         opNovaLeitura = conexao.prepareStatement("INSERT INTO Leitura(unidade, loca) VALUES(?,?)");
         opBuscaPorLeituraColeta = conexao.prepareStatement("SELECT * FROM Leitura WHERE coleta = ?");
+        opBuscaPorLocal = conexao.prepareStatement("SELECT coleta,loca FROM Leitura GROUP BY coleta");
 
     }
 
@@ -65,7 +67,25 @@ public class LeituraDAO {
 
     }
 
-    public List<Leitura> listByLocal() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public List<Leitura> listByLocal() throws Exception {
+         try {
+            List<Leitura> listaPorLocal = new ArrayList<>();
+
+            ResultSet resultado = opBuscaPorLeituraColeta.executeQuery();
+
+            while (resultado.next()) {
+                Leitura coletaPorLocal = new Leitura();
+
+                coletaPorLocal.setColeta(resultado.getInt("coleta"));
+                coletaPorLocal.setLocal(resultado.getString("loca"));
+
+                listaPorLocal.add(coletaPorLocal);
+            }
+
+             return listaPorLocal;
+
+        } catch (SQLException ex) {
+            throw new Exception("Erro ao listar as leituras no banco!", ex);
+        }
     }
 }
