@@ -13,7 +13,7 @@
     </head>
     <body>
          <%@include file="JSPF/Menu.jspf" %>
-        <h1>Lista de Pedidos</h1>
+        <h1>Lista por local</h1>
         <div style="color: red;">${mensagem}</div>
         <table>
             <thead>

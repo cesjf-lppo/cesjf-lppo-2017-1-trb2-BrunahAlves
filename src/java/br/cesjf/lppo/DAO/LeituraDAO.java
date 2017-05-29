@@ -19,6 +19,7 @@ public class LeituraDAO {
     private final PreparedStatement opNovaLeitura;
     private final PreparedStatement opBuscaPorLeituraColeta;
     private final PreparedStatement opBuscaPorLocal;
+    private final PreparedStatement opBuscaPorLeitura;
 
     public LeituraDAO() throws Exception {
 
@@ -26,6 +27,7 @@ public class LeituraDAO {
         opNovaLeitura = conexao.prepareStatement("INSERT INTO Leitura(unidade, loca) VALUES(?,?)");
         opBuscaPorLeituraColeta = conexao.prepareStatement("SELECT * FROM Leitura WHERE coleta = ?");
         opBuscaPorLocal = conexao.prepareStatement("SELECT * FROM Leitura");
+        opBuscaPorLeitura = conexao.prepareStatement("SELECT * FROM Leitura WHERE id= ?");
 
     }
 
@@ -87,5 +89,31 @@ public class LeituraDAO {
         } catch (SQLException ex) {
             throw new Exception("Erro ao listar as leituras no banco!", ex);
         }
+    }
+
+    public Leitura getByLeitura(Integer id) throws Exception {
+        try {
+            Leitura leitura = null;
+            opBuscaPorLeitura.clearParameters();
+            opBuscaPorLeitura.setInt(1, id);
+
+            ResultSet resultado = opBuscaPorLeitura.executeQuery();
+
+            if (resultado.next()) {
+                leitura = new Leitura();
+
+                leitura.setId(resultado.getInt("id"));
+                leitura.setColeta(resultado.getInt("coleta"));
+                leitura.setLocal(resultado.getString("loca"));
+                leitura.setLeitura(resultado.getFloat("leitura"));
+                leitura.setUnidade(resultado.getString("unidade"));
+                leitura.setAtualizacao(resultado.getTimestamp("atualizacao"));
+            }
+            return leitura;
+
+        } catch (SQLException ex) {
+            throw new Exception("Erro ao buscar os pedidos no banco!", ex);
+        }
+        
     }
 }
