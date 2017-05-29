@@ -18,15 +18,15 @@
         <table>
             <thead>
                 <tr>
-                <th>Dono</th>
-                <th>Valor Total</th>
+                <th>Coleta</th>
+                <th>Local</th>
                 </tr>
             </thead>    
             <tbody>
-                <c:forEach var="pedido" items="${pedidos}">    
+                <c:forEach var="local" items="${local}">    
                 <tr>
-                    <td>${pedido.dono}</td>
-                    <td>${pedido.valor}</td>
+                    <td>${local.coleta}</td>
+                    <td>${local.local}</td>
                 </tr>
                 </c:forEach>
             </tbody>

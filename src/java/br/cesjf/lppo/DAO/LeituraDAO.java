@@ -25,7 +25,7 @@ public class LeituraDAO {
         Connection conexao = ConnectionFactory.createConnection();
         opNovaLeitura = conexao.prepareStatement("INSERT INTO Leitura(unidade, loca) VALUES(?,?)");
         opBuscaPorLeituraColeta = conexao.prepareStatement("SELECT * FROM Leitura WHERE coleta = ?");
-        opBuscaPorLocal = conexao.prepareStatement("SELECT coleta,loca FROM Leitura GROUP BY coleta");
+        opBuscaPorLocal = conexao.prepareStatement("SELECT * FROM Leitura");
 
     }
 
@@ -71,7 +71,7 @@ public class LeituraDAO {
          try {
             List<Leitura> listaPorLocal = new ArrayList<>();
 
-            ResultSet resultado = opBuscaPorLeituraColeta.executeQuery();
+            ResultSet resultado = opBuscaPorLocal.executeQuery();
 
             while (resultado.next()) {
                 Leitura coletaPorLocal = new Leitura();
