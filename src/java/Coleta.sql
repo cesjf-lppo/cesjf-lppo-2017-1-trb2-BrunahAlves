@@ -9,4 +9,4 @@ CREATE TABLE Coleta(
     dat TIMESTAMP NOT NULL
 );
 
-insert into Coleta VALUES('Centro', '15-06-2017 10:00:00')
+insert into Coleta(descricao, dat ) VALUES('Centro', '2017-05-29 17:39:57.656')

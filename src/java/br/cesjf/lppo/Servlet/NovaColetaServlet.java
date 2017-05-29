@@ -35,14 +35,22 @@ public class NovaColetaServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        String dataTexto = request.getParameter("data");
+        String horaTexto = request.getParameter("hora");
+        String datahora = dataTexto.trim()+" "+horaTexto.trim();
+        
+       
         Coleta novaColeta = new Coleta();
 
         novaColeta.setDescricao(request.getParameter("descricao"));
-        try {
-            novaColeta.setData(df.parse(request.getParameter("data")));
-        } catch (ParseException ex) {
-            Logger.getLogger(NovaColetaServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        
+       // try {
+            novaColeta.setData(new Date());//df.parse(datahora));
+           //  System.out.println(novaColeta.getData());
+            
+//        } catch (ParseException ex) {
+//            Logger.getLogger(NovaColetaServlet.class.getName()).log(Level.SEVERE, null, ex);
+//        }
 
         try {
             ColetaDAO dao = new ColetaDAO();
@@ -50,7 +58,7 @@ public class NovaColetaServlet extends HttpServlet {
         } catch (Exception ex) {
             request.setAttribute("mensagem", ex);
             request.getRequestDispatcher("WEB-INF/nova-coleta.jsp").forward(request, response);
-            return;
+           
         }
 
         response.sendRedirect("NovaLeitura.html");
